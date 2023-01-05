@@ -33,12 +33,12 @@ export class SoccerItem extends React.Component {
                 <Card>
                     <Card.Header>{this.props.soccer.title}</Card.Header>
                     <Card.Body>
-                        <blockquote className="blockquote mb-0">
-                            
-                            <footer >
-                                {this.props.soccer.player}
-                            </footer>
-                        </blockquote>
+                      <Card.Text>
+                        <hr></hr>
+                        <p>Player:  {this.props.soccer.player}</p>
+                        <p>Position:  {this.props.soccer.position}</p>
+                        <hr></hr>
+                       </Card.Text>
                     </Card.Body>
                 <Link to={'/edit/'+this.props.soccer._id} className="btn btn-primary">Edit</Link>
                 <Button variant="danger" onClick={this.DeleteSoccer}>Delete</Button>
