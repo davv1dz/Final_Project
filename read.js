@@ -4,46 +4,30 @@ import axios from "axios";
 
 export class Read extends React.Component{
 
-    constructor(){
+    constructor() {
         super();
-        this.ReloadData = this.ReloadData.bind(this);
+        this.componentDidMount = this.componentDidMount.bind(this);
     }
-
-    ReloadData(){
-        axios.get('http://localhost:4000/api/soccers')
-        .then((response)=>{
-            this.setState({soccers:response.data})
-        })
-        .catch((error)=>{
-            console.log(error);
-        })
-
-    }
-    
-
+   
     componentDidMount() {
         axios.get('http://localhost:4000/api/soccers')
-        .then((response)=>{
-            this.setState({soccers:response.data})
-        })
-        .catch((error)=>{
-            console.log(error);
-        })
+            .then((response) => {
+                this.setState({ soccers: response.data })
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 
     state = {
-        soccers:[ ]
-        
-
+        soccers: []
     }
-    
-    render(){
-        return(
+
+    render() {
+        return (
             <div>
                 <h3>Here Is Where You Can Find Your Inputed Data Below</h3>
-                <Soccers soccers={this.state.soccers} ReloadData={this.ReloadData}></Soccers>
-              
+                <Soccers soccers={this.state.soccers} Reload={this.componentDidMount}></Soccers>
             </div>
         );
     }
-}
